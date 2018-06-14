@@ -4,7 +4,7 @@ Originally airing in 1998, this is the remake of the popularly acclaimed game sh
 
 This project was originally worked on for a special English lesson at a local high school on July 11, 2018. It will no longer receive updates.
 
-**[Play game](https://millionaire-school.netlify.com/#/game)**
+**[Play game](https://millionaire-school.netlify.com/#/game)**  
 **[Try Fastest Finger First](https://millionaire-school.netlify.com/fastest-finger-first.html)**
 
 ## Changes
