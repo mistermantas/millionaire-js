@@ -1,5 +1,7 @@
 # *Who Wants to Be a Millionaire?* in JavaScript
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/mistermantas/millionaire-js.svg?style=flat-square)](https://github.com/mistermantas/millionaire-js/commits/master)   [![Twitter](https://img.shields.io/twitter/follow/mistermantas.svg?style=social&label=Follow)](https://twitter.com/mistermantas)
+
 Originally airing in 1998, this is the remake of the popularly acclaimed game show that had its 20 year anniversary in the UK in May of 2018. This project was forked and built off of the foundation that [Luke Wlodarczyk](https://github.com/LukeWlodarczyk/Who-Wants-to-Be-a-Millionaire) created and mainly features UI improvements as well as some back-end changes. The front-end for Fastest Finger First has also been implemented.
 
 This project was originally worked on for a special English lesson at a local high school on July 11, 2018. It will no longer receive updates.
