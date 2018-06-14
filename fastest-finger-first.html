@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Fastest Finger First & Host Intro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <style>
+    body {
+      margin: 0;
+      background: radial-gradient(#3b5379 0%,#0e1935 100%);
+      width: 100%;
+      height: 100vh;
+      color: #fff;
+      overflow-y: hidden;
+      font-family: 'lato', sans-serif;
+    }
+
+    .text {
+      display: block;
+      color: #fff;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0);
+      margin: 15px 0;
+      opacity: rgba(255,255,255,.95);
+      font-weight: bold;
+      padding: 0.4em;
+      font-size: 28px;
+      }
+
+
+
+.questionContainer {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.125rem 0.3125rem 0.0625rem rgba(0,0,0,.2);
+  font-size: 48px;
+  line-height: 1.15;
+  text-align: center;
+  border: 0; }
+
+.questionContainer p {
+  padding: 28px;
+  margin: 0;
+}
+
+
+    .asnwersContainer {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      width: 100%; }
+
+    .answerBtn {
+      font-size: 24px;
+      width: 50%;
+      text-align: left;
+      border: 0;
+      font-family: inherit;
+      padding: 28px;
+      margin: 0;
+      background-color: rgba(0, 0, 0, 0);
+      transition: 0.2s;
+      color: #fff; }
+      .answerBtn:hover {
+        background-color: rgba(255,255,255,.1);
+        cursor: pointer; }
+      .answerBtn:disabled {
+        cursor: not-allowed; }
+
+
+.answerBtn::before { font-weight: bold; }
+.answerBtnA::before { content: 'A: '; }
+.answerBtnB::before { content: 'B: '; }
+.answerBtnC::before { content: 'C: '; }
+.answerBtnD::before { content: 'D: '; }
+
+
+
+    .text .order { color: red; font-size: 10vh; }
+        .answerBtnChoice { width: 10%; text-align: center; opacity: 0.1; }
+
+
+    @import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+    </style>
+
+    <audio src="./sounds/fff_music.mp3" id="music"></audio>
+    <audio src="./sounds/fff_music_end.mp3" id="music_end"></audio>
+    <audio src="./sounds/fff_correct.mp3" id="order"></audio>
+
+    <div id="app">
+
+      <div class="text">
+        <div class="text">You'll need a phone or tablet. Go to ‘www.sli.do’ and enter code #2380! Enter your name in the submission box and leave a space but DO NOT SEND IT.<br>You will need to enter 4 extra letters for your answer (ABCD, DCAB, CABD, etc) It should look something like this: "Tomas -" then "Tomas - ABCD"</div>
+
+        <div class="order" style="display: none"></div>
+      </div>
+
+      <div class="questionContainer"><p></p></div>
+      <div class="asnwersContainer">
+        <button class="answerBtn answerBtnA">A</button>
+        <button class="answerBtn answerBtnB">B</button>
+        <button class="answerBtn answerBtnC">C</button>
+        <button class="answerBtn answerBtnD">D</button>
+      </div>
+
+
+      <button class="answerBtn answerBtnChoice" onclick="openQuestion(1)">1</button>
+      <button class="answerBtn answerBtnChoice" onclick="openQuestion(2)">2</button>
+      <button class="answerBtn answerBtnChoice" onclick="openQuestion(3)">3</button>
+      <button class="answerBtn answerBtnChoice" onclick="openQuestion(4)">4</button>
+      <button class="answerBtn answerBtnChoice" onclick="openQuestion(5)">5</button>
+      <button class="answerBtn answerBtnChoice" onclick="openQuestion(6)">6</button>
+      <button class="answerBtn answerBtnChoice" onclick="openQuestion(7)">7</button>
+      <button class="answerBtn answerBtnChoice" onclick="openQuestion(8)">8</button>
+      <button class="answerBtn answerBtnChoice" onclick="openQuestion(9)">9</button>
+	<button class="answerBtn answerBtnChoice" onclick="openQuestion(0)">0</button>
+	  
+    </div>
+
+    <script>
+    function openQuestion(question) {
+      //sdocument.querySelector('#music').play();
+
+      setTimeout(function() {
+      switch(question) {
+        case 1:
+          document.querySelector('.questionContainer p').innerHTML = 'Put these cheeses in alphabetical order.';
+
+          document.querySelector('.answerBtnA').innerHTML = 'Wensleydale';
+          document.querySelector('.answerBtnB').innerHTML = 'Camembert';
+          document.querySelector('.answerBtnC').innerHTML = 'Gruyère';
+          document.querySelector('.answerBtnD').innerHTML = 'Roquefort';
+
+          document.querySelector('.text .order').innerHTML = 'B C D A';
+
+          document.querySelector('.text .text').innerHTML = 'Send your answer WITH YOUR NAME. Example: Tomas - ABCD';
+
+          break;
+        case 2:
+          document.querySelector('.questionContainer p').innerHTML = 'Put the seasons of the year in alphabetical order, starting with Autumn.';
+
+          document.querySelector('.answerBtnA').innerHTML = 'Spring';
+          document.querySelector('.answerBtnB').innerHTML = 'Winter';
+          document.querySelector('.answerBtnC').innerHTML = 'Autumn';
+          document.querySelector('.answerBtnD').innerHTML = 'Summer';
+
+          document.querySelector('.text .order').innerHTML = 'C B A D';
+
+          document.querySelector('.text .text').innerHTML = 'Send your answer WITH YOUR NAME. Example: Tomas - ABCD';
+
+          break;
+        case 3:
+          document.querySelector('.questionContainer p').innerHTML = 'Put these cities in order of population, starting with the smallest.';
+
+          document.querySelector('.answerBtnA').innerHTML = 'Vilnius';
+          document.querySelector('.answerBtnB').innerHTML = 'Klaipėda';
+          document.querySelector('.answerBtnC').innerHTML = 'Palanga';
+          document.querySelector('.answerBtnD').innerHTML = 'Trakai';
+
+          document.querySelector('.text .order').innerHTML = 'D B C A';
+
+          document.querySelector('.text .text').innerHTML = 'Send your answer WITH YOUR NAME. Example: Tomas - ABCD';
+
+          break;
+        case 4:
+          document.querySelector('.questionContainer p').innerHTML = 'Put these numbers in a chronological order.';
+
+          document.querySelector('.answerBtnA').innerHTML = '1426';
+          document.querySelector('.answerBtnB').innerHTML = '1624';
+          document.querySelector('.answerBtnC').innerHTML = '1245';
+          document.querySelector('.answerBtnD').innerHTML = '1362';
+
+          document.querySelector('.text .order').innerHTML = 'C D A B';
+
+          document.querySelector('.text .text').innerHTML = 'Send your answer WITH YOUR NAME. Example: Tomas - ABCD';
+
+          break;
+        case 5:
+          document.querySelector('.questionContainer p').innerHTML = 'Put these inventions in the chronological order of their invention.';
+
+          document.querySelector('.answerBtnA').innerHTML = 'Ballpoint pen';
+          document.querySelector('.answerBtnB').innerHTML = 'Battery';
+          document.querySelector('.answerBtnC').innerHTML = 'TV';
+          document.querySelector('.answerBtnD').innerHTML = 'Wheel';
+
+          document.querySelector('.text .order').innerHTML = 'D B A C';
+
+          document.querySelector('.text .text').innerHTML = 'Send your answer WITH YOUR NAME. Example: Tomas - ABCD';
+
+          break;
+        case 6:
+          document.querySelector('.questionContainer p').innerHTML = 'Put these art periods (epochs) in their chronological order, starting with the earliest.';
+
+          document.querySelector('.answerBtnA').innerHTML = 'Contemporary';
+          document.querySelector('.answerBtnB').innerHTML = 'Classical antiquity';
+          document.querySelector('.answerBtnC').innerHTML = 'Renaissance';
+          document.querySelector('.answerBtnD').innerHTML = 'Romanticism';
+
+          document.querySelector('.text .order').innerHTML = 'B C D A';
+
+          document.querySelector('.text .text').innerHTML = 'Send your answer WITH YOUR NAME. Example: Tomas - ABCD';
+
+          break;
+        case 7:
+          document.querySelector('.questionContainer p').innerHTML = 'Order these Roman numerals, smallest firsts.';
+
+          document.querySelector('.answerBtnA').innerHTML = 'III';
+          document.querySelector('.answerBtnB').innerHTML = 'II';
+          document.querySelector('.answerBtnC').innerHTML = 'IV';
+          document.querySelector('.answerBtnD').innerHTML = 'VI';
+
+          document.querySelector('.text .order').innerHTML = 'B A C D';
+
+          document.querySelector('.text .text').innerHTML = 'Send your answer WITH YOUR NAME. Example: Tomas - ABCD';
+
+          break;
+        case 8:
+          document.querySelector('.questionContainer p').innerHTML = 'Put the Windows OS versions in chronological order based on release dates, earliest first.';
+
+          document.querySelector('.answerBtnA').innerHTML = 'Windows Vista';
+          document.querySelector('.answerBtnB').innerHTML = 'Windows 7';
+          document.querySelector('.answerBtnC').innerHTML = 'Windows XP';
+          document.querySelector('.answerBtnD').innerHTML = 'Windows 10';
+
+          document.querySelector('.text .order').innerHTML = 'C A B D';
+
+          document.querySelector('.text .text').innerHTML = 'Send your answer WITH YOUR NAME. Example: Tomas - ABCD';
+
+          break;
+        case 9:
+          document.querySelector('.questionContainer p').innerHTML = 'Put these versions of iOS in their chronological order based on their release dates, earliest first.';
+
+          document.querySelector('.answerBtnA').innerHTML = 'iOS 6';
+          document.querySelector('.answerBtnB').innerHTML = 'iPhone OS 3';
+          document.querySelector('.answerBtnC').innerHTML = 'iOS 7';
+          document.querySelector('.answerBtnD').innerHTML = 'iOS 10';
+
+          document.querySelector('.text .order').innerHTML = 'B A C D';
+
+          document.querySelector('.text .text').innerHTML = 'Send your answer WITH YOUR NAME. Example: Tomas - ABCD';
+
+          break;
+	  case 0:
+		  document.querySelector('.questionContainer p').innerHTML = 'Put these numbers in a chronological order.';
+
+		  document.querySelector('.answerBtnA').innerHTML = '6';
+		  document.querySelector('.answerBtnB').innerHTML = '3';
+		  document.querySelector('.answerBtnC').innerHTML = '7';
+		  document.querySelector('.answerBtnD').innerHTML = '10';
+
+		  document.querySelector('.text .order').innerHTML = 'B A C D';
+
+		  document.querySelector('.text .text').innerHTML = 'Send your answer WITH YOUR NAME. Example: Tomas - ABCD';
+
+		  break;
+      }
+      }, 5000)
+
+      setTimeout(function() {
+        document.querySelector('.text .text').innerHTML = 'Time is up. Let\'s see the correct order!';
+
+        document.querySelector('#music_end').play();
+
+        document.querySelector('.text .order').style.display = 'block';
+      }, 40000)
+    }
+
+    //document.querySelector('#app').addEventListener('click', function() {
+    //  console.log(x);
+    //})
+    </script>
+  </body>
+</html>
