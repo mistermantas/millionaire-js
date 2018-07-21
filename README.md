@@ -9,6 +9,10 @@ This project was originally worked on for a special English lesson at a local hi
 **[Play game](https://millionaire-school.netlify.com/#/game)**  
 **[Try Fastest Finger First](https://millionaire-school.netlify.com/fastest-finger-first.html)**
 
+## For hosts
+
+The original doc used for the project's host is now [available](https://millionaire-school.netlify.com/hostguide.html) in a HTML file.
+
 ## Changes
 
 * Cleaned up interface, moved next question button
