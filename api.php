@@ -17,12 +17,12 @@ if($_GET['set'] == '1') {
   switch ($_GET['question']) {
     case 'one':
       echo('{"response_code":0,"results":[
-        {"question":"What is the scientific name for modern day humans?",
-         "correct_answer":"Homo Sapiens",
+        {"question":"How would one say goodbye in Spanish?",
+         "correct_answer":"Adiós",
          "incorrect_answers": [
-           "Homo Ergaster",
-           "Homo Erectus",
-           "Homo Neanderthalensis"
+           "Hola",
+           "Salir",
+           "Au Revoir"
          ]}]}');
       break;
     ////////////
@@ -39,34 +39,34 @@ if($_GET['set'] == '1') {
     ////////////
     case 'three':
       echo('{"response_code":0,"results":[
-        {"question":"How many hours is the United Kingdom behind Lithuania?",
-         "correct_answer":"2 hours",
+        {"question":"English belongs to what Indo-European language family?",
+         "correct_answer":"Germanic",
          "incorrect_answers": [
-           "5 hours",
-           "3 hours",
-           "4 hours"
+           "Romance",
+           "Slavic",
+           "Sitinic"
          ]}]}');
       break;
     ////////////
     case 'four':
       echo('{"response_code":0,"results":[
-        {"question":"Choose the correct tense, which the following sentence is using: “He told me Bill had been living in Paris.”",
-         "correct_answer":"Past Perfect Continuous",
+        {"question":"Portugal borders only one other country. Which one is it?",
+         "correct_answer":"Spain",
          "incorrect_answers": [
-           "Past Perfect",
-           "Past Simple",
-           "Simple Continuous"
+           "Italy",
+           "Monaco",
+           "Germany"
          ]}]}');
       break;
     ////////////
     case 'five':
       echo('{"response_code":0,"results":[
-        {"question":"Typically what Northern American slang refers to the biceps?",
-         "correct_answer":"Guns",
+        {"question":"What does the British slang “tosh” stand for?",
+         "correct_answer":"Nonsense",
          "incorrect_answers": [
-           "Elevators",
-           "Large Boys",
-           "My Friends"
+           "Dishes",
+           "Dough",
+           "Purse"
          ]}]}');
       break;
     ////////////
@@ -83,12 +83,12 @@ if($_GET['set'] == '1') {
     ////////////
     case 'seven':
       echo('{"response_code":0,"results":[
-        {"question":"Who made the first mobile phone in the United States?",
-         "correct_answer":"Motorola",
+        {"question":"What is the capital of Estonia?",
+         "correct_answer":"Talinn",
          "incorrect_answers": [
-           "Unbound Communications",
-           "Exon",
-           "Nokia"
+           "Riga",
+           "Vilnius",
+           "Helsinki"
          ]}]}');
       break;
     ////////////
@@ -105,23 +105,23 @@ if($_GET['set'] == '1') {
     ////////////
     case 'nine':
       echo('{"response_code":0,"results":[
-        {"question":"The United States of America was founded on what date?",
-         "correct_answer":"July 4, 1776",
+        {"question":"What was the first country to recognize Lithuania’s independence?",
+         "correct_answer":"Iceland",
          "incorrect_answers": [
-           "March 20, 1776",
-           "July 4, 1780",
-           "July 4, 1767"
+           "Sweden",
+           "Russia",
+           "United States"
          ]}]}');
       break;
     ////////////
     case 'ten':
       echo('{"response_code":0,"results":[
-        {"question":"Who wrote “Catcher in the Rye,” the 1951 novel about Houlden and his teenagehood problems?",
-         "correct_answer":"J. D. Salinger",
+        {"question":"How many languages has the European Union designated by agreement with the member states as “official and working”?",
+         "correct_answer":"24",
          "incorrect_answers": [
-           "Stephen King",
-           "J. K. Rowling",
-           "Ernest Hemingway"
+           "8",
+           "12",
+           "18"
          ]}]}');
       break;
     ////////////
