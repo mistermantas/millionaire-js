@@ -13677,7 +13677,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         currentWinnings    : [4, 5, 6, 7, 8, 9, 10, 14, 18, 20, 25, 30],
         guaranteedWinnings : [0, 0, 1000, 1000, 1000, 1000, 1000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000],
         difficulty         : ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'],
-        themeRound         : ['easy', 'easy', 'medium', 'medium', 'medium', 'medium', 'medium', 'hard', 'hard', 'hard', 'hard', 'hard']
+        themeRound         : ['easy', 'easy', 'medium', 'medium', 'medium', 'medium', 'medium', 'hard', 'hard', 'hard', 'hard', 'hard_million'],
+        secondsToGo         : [35, 35, 50, 50, 50, 50, 50, 75, 75, 90, 90, 120]
 });
 
 
@@ -24833,9 +24834,12 @@ var Menu = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'container menuContainer' },
-        _react2.default.createElement(_MenuButton2.default, { source: '/game', text: 'Start' }),
-        _react2.default.createElement(_MenuButton2.default, { source: '/bestscores', text: 'Best scores' }),
-        _react2.default.createElement(_MenuButton2.default, { source: '/options', text: 'Options' })
+        _react2.default.createElement(_MenuButton2.default, { source: '/game', text: 'Open the Game' }),
+        _react2.default.createElement('p', { className: 'intro' }, 'Hi! Welcome to the game of "Who Wants to Be a Millionaire? - Classroom Edition"! There is some important information teachers should be aware of: (1) students will play in pairs, (2) the game should be shown for all the class to see, like on the show itself. So turn on your projecter, TV, and we recommend that you have your speakers turned on, too. They do not have to be loud, but it is highly recommended for the atmosphere — there are original sound effects taken from the original show and we want you to enjoy them in all of their glory. (3) It is highly recommended that you go full screen by pressing the F11 key at the top of your keyboard. Once you are done, you can hit F11 again. (4) We recommend choosing the Test Set before continuing — check to see if all the questions can be read clearly and the game works properly. You can use the Ctrl, then the plus and minus keys to change the size of elements on the page.')
+
+        //_react2.default.createElement('a', { className: 'menuButton', href: 'https://github.com/mistermantas/millionaire-js/tree/eday' }, 'Start Game')
+        //_react2.default.createElement(_MenuButton2.default, { source: '/bestscores', text: 'Best scores' }),
+        //_react2.default.createElement(_MenuButton2.default, { source: '/options', text: 'Options' })
       );
     }
   }]);
@@ -27303,9 +27307,9 @@ var Game = function (_React$Component) {
 
     _this.getQuestion = function () {
 		if (_this.state.name === 'x') {
-			 var baseUrl = 'https://opentdb.com/api.php?amount=1&category=9&difficulty=easy&type=multiple';
+			var baseUrl = 'https://opentdb.com/api.php?amount=1&category=22&type=multiple';
 		} else {
-			var baseUrl = 'http://localhost/api.php?question=' + _data2.default.difficulty[_this.state.scores] + '&set=' + _this.state.name;
+			var baseUrl = 'https://millionaire.mnts.lt/eday.php?question=' + _data2.default.difficulty[_this.state.scores] + '&set=' + _this.state.name;
 		}
       fetch(baseUrl).then(function (data) {
         if (data.ok) {
@@ -27333,13 +27337,13 @@ var Game = function (_React$Component) {
         lifelinesStatus: status,
         canAnswer: [true, true, true, true],
         canClickControl: [true, false, false],
-        secsLeft: 30 + _this.state.secsLeft
+        secsLeft: _data2.default.secondsToGo[_this.state.scores] // + _this.state.secsLeft
       });
     };
 
     _this.finishGame = function (text) {
       clearInterval(_this.intervalId);
-      _this.updateRanking(false, true);
+      //_this.updateRanking(false, true);
       _this.changeAudio('gameSounds', 'wrong_answer');
       //_this.changeAudio('mainTheme', 'main_theme');
       _this.setState({
@@ -27351,25 +27355,51 @@ var Game = function (_React$Component) {
       });
     };
 
+
+
+
+
+    _this.finishGameWithoutWrongAnswer = function (text) {
+      clearInterval(_this.intervalId);
+      //_this.updateRanking(false, true);
+      //_this.changeAudio('mainTheme', 'main_theme');
+      _this.setState({
+        canUseLifelines: [false, false, false, false, false],
+        canClickControl: [true, false, false],
+        canAnswer: [false, false, false, false],
+        canType: true,
+        text: text
+      });
+    };
+
+
     _this.startGame = function (event) {
       event.preventDefault();
+
+      document.querySelector('.panel form').hidden = true;
+
+      //_this.setState({
+      //  name: document.querySelector('#setNum').value;
+      //});
+
+
       if (_this.state.name.length > 0) {
         //Clear inteval in case multiple click on Start Game button
         clearInterval(_this.intervalId);
-        _this.changeAudio('gameSounds', 'lets_play');
+        //_this.changeAudio('gameSounds', 'lets_play');
         _this.timeuot = setTimeout(function () {
           return _this.changeAudio('mainTheme', 'easy');
-        }, 1000);
+        }, 1); // MIGHT WANT TO RETURN TO THIS
         _this.exitVotingResult();
         _this.prepareQuestion([true, true, true, true, true]);
         _this.setState({
-          text: 'Hello! This is your first question:',
-          maxSecRound: 30,
+          text: 'Good luck!',
+          maxSecRound: 35,
           canType: false,
           scores: 0,
           currentWinnings: 0,
           guaranteedWinnings: 0,
-          secsLeft: 30,
+          secsLeft: 35,
           canUseLifelines: [true, true, true, true, true],
           isPause: false
         });
@@ -27383,8 +27413,8 @@ var Game = function (_React$Component) {
           secsLeft: _this.state.secsLeft - 1
         });
       }
-      if (_this.state.secsLeft === -2) {
-		_this.finishGame('Time is up! You walk away with ' + _this.state.currentWinnings + ' points');
+      if (_this.state.secsLeft === 0) {
+		_this.finishGameWithoutWrongAnswer('Time is up! You walk away with ' + _this.state.currentWinnings + ' points. To start a new game, refresh the page (press the F5 key).');
       }
     };
 
@@ -27395,7 +27425,7 @@ var Game = function (_React$Component) {
       }, 1000);
       _this.exitVotingResult();
       _this.prepareQuestion(_this.state.lifelinesStatus);
-      _this.setText('Great! This is your next question!');
+      //_this.setText('Great! This is your next question!');
       _this.intervalId = setInterval(_this.timer.bind(), 1000);
       _this.setState({
         maxSecRound: _this.state.secsLeft + 30
@@ -27431,12 +27461,30 @@ var Game = function (_React$Component) {
       _this.state.allAnsBtns[idx].disabled = true;
     };
 
+    _this.hightlightDoubleDipAns = function (idx) {
+      _this.state.allAnsBtns[idx].classList.remove('selected');
+      _this.state.allAnsBtns[idx].classList.add('wrong-fifty');
+      _this.state.allAnsBtns[idx].disabled = true;
+    }
 
-    // Mantas
+
 
     window.stopClock = function() {
       _this.setState({
         isPause: true
+      });
+    }
+
+    window.stopClockAndMusic = function() {
+      stopClock()
+      document.querySelector('#mainTheme').pause()
+    }
+
+    window.restartClockAndMusic = function() {
+      document.querySelector('#mainTheme').play()
+
+      _this.setState({
+        isPause: false
       });
     }
 
@@ -27447,11 +27495,23 @@ var Game = function (_React$Component) {
     }
 
 
+    window.stopOrRestartClockAndMusic = function() {
+      if (_this.state.isPause) {
+        restartClockAndMusic()
+      } else {
+        stopClockAndMusic()
+      }
+    }
+
 
 
     _this.handleAnsSelect = function (answer, i) {
       _this.changeAudio('mainTheme', '');
-      _this.changeAudio('gameSounds', 'final_answer');
+      if (_this.state.dChanceActiv === false) {
+        _this.changeAudio('gameSounds', 'final_answer');
+      } else {
+        _this.changeAudio('gameSounds', 'double-dip-choice');
+      }
       _this.state.allAnsBtns = document.querySelectorAll('.answerBtn');
       _this.hightlightSelectedAns(i);
 
@@ -27478,15 +27538,15 @@ var Game = function (_React$Component) {
 
           if (_this.state.scores < 12) {
             _this.changeAudio('gameSounds', 'correct_answer');
-            _this.setText("That's right! You have now got " + _data2.default.currentWinnings[_this.state.scores - 1] + " points!");
+            _this.setText("You now have " + _data2.default.currentWinnings[_this.state.scores - 1] + " points.");
           } else {
             _this.setState({
               canClickControl: [true, false, false]
             });
-            _this.updateRanking(false);
+            //_this.updateRanking(false);
             _this.changeAudio('mainTheme', 'winning_theme');
             _this.changeAudio('gameSounds', 'you_won_million');
-            _this.setText("CONGRATULATIONS! YOU WIN! SOMETHING!");
+            _this.setText("CONGRATULATIONS! YOU ANSWERED ALL 12 QUESTIONS CORRECTLY!");
 
             document.querySelector('body').style.background = "green";
           }
@@ -27494,8 +27554,8 @@ var Game = function (_React$Component) {
           if (_this.state.dChanceActiv === false) {
             _this.hightlightCorrectAns();
             _this.hightlightWrongAns(i);
-            _this.updateRanking(false);
-            _this.finishGame('Oh no, that is the wrong answer! You go home with ' + _this.state.guaranteedWinnings + ' points');
+            //_this.updateRanking(false);
+            _this.finishGame('OH NO! You lose, leaving with ' + _this.state.guaranteedWinnings + ' points. To start a new game, refresh the page (press the F5 key).');
           } else {
             _this.setText("Wrong answer! But you have another chance to get this one right.");
             _this.setState({
@@ -27503,10 +27563,14 @@ var Game = function (_React$Component) {
               canAnswer: [true, true, true, true],
               dChanceActiv: false
             });
-            _this.hightlightWrongAns(i);
+
+            stopClock();
+            _this.changeAudio('gameSounds', 'double-dip-second');
+
+            _this.hightlightDoubleDipAns(i);
           }
         }
-      }, parseInt(_data2.default.currentWinnings[_this.state.scores]) * 800);
+      }, parseInt(_data2.default.currentWinnings[_this.state.scores]) * 400);
     };
 
     _this.resign = function () {
@@ -27514,7 +27578,7 @@ var Game = function (_React$Component) {
       _this.timeuot = setTimeout(function () {
         //return _this.changeAudio('mainTheme', 'main_theme');
       }, 1000);
-      _this.setText('Congratulations! You won ' + _this.state.currentWinnings + ' points');
+      _this.setText('Congratulations! You won ' + _this.state.currentWinnings + ' points.');
       _this.setState({
         canType: true,
         canClickControl: [true, false, false],
@@ -27522,15 +27586,15 @@ var Game = function (_React$Component) {
         canAnswer: [false, false, false]
       });
 
-      _this.updateRanking(true);
+      //_this.updateRanking(true);
     };
 
     _this.updateRanking = function (resigned) {
       var timeOver = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-      if (resigned && _this.state.currentWinnings > 0 || !resigned && _this.state.guaranteedWinnings > 0 && !timeOver) {
-        //var rankRef = firebase.database().ref('rank');
-        //var newRankRef = rankRef.push();
+      /* if (resigned && _this.state.currentWinnings > 0 || !resigned && _this.state.guaranteedWinnings > 0 && !timeOver) {
+        var rankRef = firebase.database().ref('rank');
+        var newRankRef = rankRef.push();
         var time = (_this.state.scores + 1) * 30 - _this.state.secsLeft;
         newRankRef.set({
           name: _this.state.name,
@@ -27540,11 +27604,11 @@ var Game = function (_React$Component) {
             return el === false;
           }).length
         });
-      }
+      } */
     };
 
     _this.handleAddExtraTime = function () {
-      _this.setText("You have activated the Plus One lifeline.");
+      _this.setText("We added an extra minute to the clock.");
       var lifelinesStatus = _this.state.lifelinesStatus;
       lifelinesStatus[0] = false;
       _this.state.canUseLifelines[0] = false;
@@ -27707,11 +27771,12 @@ var Game = function (_React$Component) {
     };
 
     _this.handleDoubleChance = function () {
-      _this.setText("Good choice! It makes things easier.");
+      _this.setText("You have activated Double Dip. You can answer twice; please pick your first answer.");
       var lifelinesStatus = _this.state.lifelinesStatus;
       lifelinesStatus[4] = false;
       _this.state.canUseLifelines[4] = false;
-      _this.changeAudio('gameSounds', 'lifelines');
+      _this.changeAudio('mainTheme', 'double-dip-first');
+      stopClock();
       _this.setState({
         dChanceActiv: true
       });
@@ -27746,10 +27811,10 @@ var Game = function (_React$Component) {
       canAnswer: [false, false, false, false],
       canType: true,
       dChanceActiv: false,
-      text: 'You\'ll need a phone or tablet. Go to ‘www.sli.do’ and enter code #2380! More information will be given by the host.',
+      text: '',
       scores: 0,
-      secsLeft: 30,
-      maxSecRound: 30,
+      secsLeft: 35,
+      maxSecRound: 35,
       canUseLifelines: [false, false, false, false, false],
       lifelinesStatus: [true, true, true, true, true],
       canClickControl: [true, false, false],
@@ -27783,14 +27848,26 @@ var Game = function (_React$Component) {
             _react2.default.createElement(
               'label',
               null,
-              _react2.default.createElement('input', { type: 'text', placeholder: 'Enter 1-6', onChange: this.handleNameChange, disabled: !this.state.canType, required: true })
+              _react2.default.createElement('select', { id: 'setNum', className: 'panelButton', onClick: this.handleNameChange, defaultValue: 'x', disabled: !this.state.canType, required: true },
+
+              _react2.default.createElement('option', {  value: 'x', disabled: true }, 'Select —'),
+              _react2.default.createElement('option', { value: '1' }, 'Set 1'),
+              _react2.default.createElement('option', { value: '2' }, 'Set 2'),
+              _react2.default.createElement('option', { value: '3' }, 'Set 3'),
+              _react2.default.createElement('option', { value: '4' }, 'Set 4'),
+              _react2.default.createElement('option', { value: '5' }, 'Set 5'),
+              //_react2.default.createElement('option', { value: '6' }, 'Set 6'),
+              _react2.default.createElement('option', { value: 'x' }, 'Test Set')
+            )
             ),
             _react2.default.createElement('input', { className: 'panelButton', onClick: this.startGame, disabled: !this.state.canClickControl[0], type: 'submit', value: 'Start game' })
           ),
           _react2.default.createElement(
-            'div',
-            { className: 'next-question', onClick: this.nextRound, disabled: !this.state.canClickControl[1] },
-            '⏩' // Next question ▶
+            'button',
+            { className: 'next-question', onClick: this.nextRound, disabled:
+            !this.state.canClickControl[1] },
+            //!this.state.canClickControl[1] },
+            '⏩ | Next' // Next question ▶ ⏩
           ),
 
           /*
@@ -27802,15 +27879,9 @@ var Game = function (_React$Component) {
 
 
           _react2.default.createElement(
-            'div',
-            { className: 'pause-clock', onClick: stopClock },
-            '⏸' // Pause clock
-          ),
-
-          _react2.default.createElement(
-            'div',
-            { className: 'restart-clock', onClick: restartClock },
-            '🔄' // Restart clock
+            'button',
+            { className: 'pause-clock', onClick: stopOrRestartClockAndMusic },
+            '⏸ | Pause' // Pause clock
           ),
 
 
@@ -27823,6 +27894,7 @@ var Game = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'game' },
+
           _react2.default.createElement(
             'h1',
             { className: 'text' },
@@ -28048,7 +28120,7 @@ var Timer = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Timer.__proto__ || Object.getPrototypeOf(Timer)).call(this, props));
 
     _this.state = {
-      timer: '00:00',
+      timer: '0',
       hue: 120
     };
     return _this;
@@ -28058,9 +28130,13 @@ var Timer = function (_React$Component) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       this.setState({
-        timer: (Math.floor(nextProps.time / 60) + ':').padStart(3, '0') + ('' + nextProps.time % 60).padStart(2, '0'),
+        timer: nextProps.time,
+        //timer: (Math.floor(nextProps.time / 60) + ':').padStart(3, '0') + ('' + nextProps.time % 60).padStart(2, '0'),
         hue: nextProps.time * 120 / nextProps.maxTime
       });
+
+      document.querySelector('body').style.setProperty("--gradient-color", 'hsl(' + this.state.hue + ', 50%, 20%)');
+      document.querySelector('html').style.background = 'hsl(' + this.state.hue + ', 50%, 50%)';
     }
   }, {
     key: 'render',
@@ -28071,7 +28147,9 @@ var Timer = function (_React$Component) {
         { className: '' },
         _react2.default.createElement(
           'div',
-          { className: 'timer', style: { 'color': 'hsl(' + this.state.hue + ', 100%, 50%)', 'borderColor': 'hsl(' + this.state.hue + ', 100%, 50%)' } },
+          { className: 'timer' //, style: { 'background': 'hsl(' + this.state.hue + ', 50%, 00%)',
+          // 'background': 'hsl(' + this.state.hue + ', 100%, 20%)' }
+          },
           this.state.timer
         )
       );
@@ -28146,7 +28224,7 @@ var CurrentScore = function (_React$Component) {
           'li',
           { key: win },
           win,
-          ' pts'
+          'pts'
         );
       });
       return _react2.default.createElement(
@@ -28270,7 +28348,7 @@ var Lifelines = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'img',
-                    { className: 'lifelinesButton fiftyFifty', src: 'img/5050.png', alt: '50/50', disabled: !this.state.canUseLifelines[1], onClick: this.onHandleClickFiftyFifty }
+                    { className: 'lifelinesButton fiftyFifty', src: 'img/5050M.png', alt: '50/50', disabled: !this.state.canUseLifelines[1], onClick: this.onHandleClickFiftyFifty }
                 ),
                 _react2.default.createElement(
                     'button',
@@ -28282,9 +28360,8 @@ var Lifelines = function (_React$Component) {
                     { className: 'lifelinesButton askAudience', src: 'img/ata.png', alt: 'Ask the Audience', disabled: !this.state.canUseLifelines[3], onClick: this.onHandleClickVoting }
                 ),
                 _react2.default.createElement(
-                    'button',
-                    { className: 'lifelinesButton', disabled: !this.state.canUseLifelines[4], onClick: this.onHandleDoubleChance },
-                    'Double Chance'
+                    'img',
+                    { className: 'lifelinesButton', src: 'img/doubleM.png', disabled: !this.state.canUseLifelines[4], onClick: this.onHandleDoubleChance }
                 )
             );
         }
@@ -28634,9 +28711,9 @@ var Main = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(_Header2.default, null),
         this.props.children,
-        _react2.default.createElement('audio', { id: 'gameSounds', src: './sounds/lets_play.mp3' }),
+        _react2.default.createElement('audio', { id: 'gameSounds', src: './sounds/lets_play.mp3', loop: false }),
         _react2.default.createElement('audio', { id: 'mainTheme', //src: './sounds/main_theme.mp3',
-        loop: true, autoPlay: true })
+        loop: false, autoPlay: true })
       );
     }
   }]);
