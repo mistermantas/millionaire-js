@@ -64,7 +64,7 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 90vh; }
+  height: 100%; }
   .menuContainer .menuButton {
     background-color: rgba(0, 0, 0, 0.2);
     color: #fff;
@@ -479,7 +479,7 @@ right: calc(13vw + 64px); }
 
 .intro {
 
-  padding: 64px;
+  padding: 12px 64px;
   color: #fff;
   line-height: 1.5;
   font-size: 18px;
