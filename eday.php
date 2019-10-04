@@ -194,7 +194,7 @@ if($_GET['set'] == '2') {
     ////////////
     case 'four':
       echo('{"response_code":0,"results":[
-        {"question":"Who won Eurovision in 2015 with the MĆ�ns ZelmerlĆ¶w song entitled “Heroes”?",
+        {"question":"Who won Eurovision in 2015 with the Mans Zelmerlow song entitled “Heroes”?",
          "correct_answer":"Sweden",
          "incorrect_answers": [
            "France",
@@ -426,10 +426,10 @@ if($_GET['set'] == '3') {
     case 'twelve':
       echo('{"response_code":0,"results":[
         {"question":"Which of the following was NOT a former capital of Lithuania?",
-         "correct_answer":"TelÅ�iai",
+         "correct_answer":"Telsiai",
          "incorrect_answers": [
            "Kaunas",
-           "KernavÄ—",
+           "Kernave",
            "Trakai"
          ]}]}');
       break;
@@ -536,8 +536,8 @@ if($_GET['set'] == '4') {
     ////////////
     case 'nine':
       echo('{"response_code":0,"results":[
-        {"question":"How old is the President of Lithuania, Dalia GrybauskaitÄ—?",
-         "correct_answer":"62",
+        {"question":"How old is the former President of Lithuania, Dalia Grybauskaite?",
+         "correct_answer":"63",
          "incorrect_answers": [
            "52",
            "55",
