@@ -27319,7 +27319,7 @@ var Game = function (_React$Component) {
 		if (_this.state.name === 'x') {
 			var baseUrl = 'https://opentdb.com/api.php?amount=1&category=22&type=multiple';
 		} else {
-			var baseUrl = 'https://millionaire.mnts.lt/eday.php?question=' + _data2.default.difficulty[_this.state.scores] + '&set=' + _this.state.name;
+			var baseUrl = 'https://teachersdaytdg19.000webhostapp.com/eday.php?question=' + _data2.default.difficulty[_this.state.scores] + '&set=' + _this.state.name;
 		}
       fetch(baseUrl).then(function (data) {
         if (data.ok) {

@@ -18,7 +18,7 @@ if($_GET['set'] == '1') {
     case 'one':
       echo('{"response_code":0,"results":[
         {"question":"How would one say goodbye in Spanish?",
-         "correct_answer":"AdiĆ³s",
+         "correct_answer":"Adios",
          "incorrect_answers": [
            "Hola",
            "Salir",
@@ -61,7 +61,7 @@ if($_GET['set'] == '1') {
     ////////////
     case 'five':
       echo('{"response_code":0,"results":[
-        {"question":"What does the British slang ā€toshā€¯ stand for?",
+        {"question":"What does the British slang “tosh” stand for?",
          "correct_answer":"Nonsense",
          "incorrect_answers": [
            "Dishes",
@@ -72,7 +72,7 @@ if($_GET['set'] == '1') {
     ////////////
     case 'six':
       echo('{"response_code":0,"results":[
-        {"question":"What is the more common name for a ā€lexiconā€¯?",
+        {"question":"What is the more common name for a “lexicon”?",
          "correct_answer":"Dictionary",
          "incorrect_answers": [
            "Prayers Book",
@@ -94,7 +94,7 @@ if($_GET['set'] == '1') {
     ////////////
     case 'eight':
       echo('{"response_code":0,"results":[
-        {"question":"What does the word ā€renaissanceā€¯ stand for?",
+        {"question":"What does the word “renaissance” stand for?",
          "correct_answer":"Rebirth",
          "incorrect_answers": [
            "Truth",
@@ -105,7 +105,7 @@ if($_GET['set'] == '1') {
     ////////////
     case 'nine':
       echo('{"response_code":0,"results":[
-        {"question":"What was the first country to recognize Lithuaniaā€™s independence?",
+        {"question":"What was the first country to recognize Lithuania’s independence?",
          "correct_answer":"Iceland",
          "incorrect_answers": [
            "Sweden",
@@ -116,7 +116,7 @@ if($_GET['set'] == '1') {
     ////////////
     case 'ten':
       echo('{"response_code":0,"results":[
-        {"question":"How many languages has the European Union designated by agreement with the member states as ā€official and workingā€¯?",
+        {"question":"How many languages has the European Union designated by agreement with the member states as “official and working”?",
          "correct_answer":"24",
          "incorrect_answers": [
            "8",
@@ -138,7 +138,7 @@ if($_GET['set'] == '1') {
     ////////////
     case 'twelve':
       echo('{"response_code":0,"results":[
-        {"question":"Poisson dā€™Avril is the French equivalent of what day?",
+        {"question":"Poisson d’Avril is the French equivalent of what day?",
          "correct_answer":"April Fools",
          "incorrect_answers": [
            "Good Friday",
@@ -161,10 +161,10 @@ if($_GET['set'] == '2') {
   switch ($_GET['question']) {
     case 'one':
       echo('{"response_code":0,"results":[
-        {"question":"What is the word for ā€helloā€¯ in German?",
+        {"question":"What is the word for “hello” in German?",
          "correct_answer":"Hallo",
          "incorrect_answers": [
-           "TschĆ¼ss",
+           "Tschess",
            "Auf Wiedersehen",
            "Bonjour"
          ]}]}');
@@ -194,7 +194,7 @@ if($_GET['set'] == '2') {
     ////////////
     case 'four':
       echo('{"response_code":0,"results":[
-        {"question":"Who won Eurovision in 2015 with the MĆ�ns ZelmerlĆ¶w song entitled ā€Heroesā€¯?",
+        {"question":"Who won Eurovision in 2015 with the Mans Zelmerlow song entitled “Heroes”?",
          "correct_answer":"Sweden",
          "incorrect_answers": [
            "France",
@@ -249,7 +249,7 @@ if($_GET['set'] == '2') {
     ////////////
     case 'nine':
       echo('{"response_code":0,"results":[
-        {"question":"Which of the following is the longest river in Europe??",
+        {"question":"Which of the following is the longest river in Europe?",
          "correct_answer":"Volga River",
          "incorrect_answers": [
            "Shannon River",
@@ -271,7 +271,7 @@ if($_GET['set'] == '2') {
     ////////////
     case 'eleven':
       echo('{"response_code":0,"results":[
-        {"question":"What are Switzerlandā€™s official, national languages?",
+        {"question":"What are Switzerland’s official, national languages?",
          "correct_answer":"German, Italian, French, Romansh",
          "incorrect_answers": [
            "Italian, German, French, Dutch",
@@ -282,7 +282,7 @@ if($_GET['set'] == '2') {
     ////////////
     case 'twelve':
       echo('{"response_code":0,"results":[
-        {"question":"What popular gameā€™s name is derived from a Svahili word meaning ā€to buildā€¯?",
+        {"question":"What popular game’s name is derived from a Svahili word meaning “to build”?",
          "correct_answer":"Jenga",
          "incorrect_answers": [
            "Monopoly",
@@ -315,7 +315,7 @@ if($_GET['set'] == '3') {
     ////////////
     case 'two':
       echo('{"response_code":0,"results":[
-        {"question":"Russia is a ā€” what?",
+        {"question":"Russia is a — what?",
          "correct_answer":"Federation",
          "incorrect_answers": [
            "Democratic Republic",
@@ -359,7 +359,7 @@ if($_GET['set'] == '3') {
     ////////////
     case 'six':
       echo('{"response_code":0,"results":[
-        {"question":"Commonly used in online discussions, what does the common abbreviation ā€IMHOā€¯ stand for?",
+        {"question":"Commonly used in online discussions, what does the common abbreviation “IMHO” stand for?",
          "correct_answer":"In my honest opinion",
          "incorrect_answers": [
            "In my honorable opinion",
@@ -392,12 +392,12 @@ if($_GET['set'] == '3') {
     ////////////
     case 'nine':
       echo('{"response_code":0,"results":[
-        {"question":"What does the German idiom ā€Ich verstehe nur Bahnhofā€¯ mean when not translated literally? If literally: ā€I only understand the train station.ā€¯",
-         "correct_answer":"I donā€™t understand a thing about what that person is saying.",
+        {"question":"What does the German idiom “Ich verstehe nur Bahnhof” mean when not translated literally? If literally: “I only understand the train station.”",
+         "correct_answer":"I don’t understand a thing about what that person is saying.",
          "incorrect_answers": [
-           "I donā€™t understand a thing about what that person is saying.",
+           "I don’t understand a thing about what that person is saying.",
            "I can only be accustomed to few things.",
-           "I donā€™t understand a thing about what I am saying."
+           "I don’t understand a thing about what I am saying."
          ]}]}');
       break;
     ////////////
@@ -414,7 +414,7 @@ if($_GET['set'] == '3') {
     ////////////
     case 'eleven':
       echo('{"response_code":0,"results":[
-        {"question":"Before its current name, the European Union was named ā€” what?",
+        {"question":"Before its current name, the European Union was named — what?",
          "correct_answer":"European Coal and Steel Community",
          "incorrect_answers": [
            "European Common Goods Market",
@@ -426,10 +426,10 @@ if($_GET['set'] == '3') {
     case 'twelve':
       echo('{"response_code":0,"results":[
         {"question":"Which of the following was NOT a former capital of Lithuania?",
-         "correct_answer":"TelÅ�iai",
+         "correct_answer":"Telsiai",
          "incorrect_answers": [
            "Kaunas",
-           "KernavÄ—",
+           "Kernave",
            "Trakai"
          ]}]}');
       break;
@@ -448,7 +448,7 @@ if($_GET['set'] == '4') {
   switch ($_GET['question']) {
     case 'one':
       echo('{"response_code":0,"results":[
-        {"question":"What does ā€LOLā€¯ stand for?",
+        {"question":"What does “LOL” stand for?",
          "correct_answer":"Laughing out loud",
          "incorrect_answers": [
            "A subtle way to critique this game",
@@ -481,7 +481,7 @@ if($_GET['set'] == '4') {
     ////////////
     case 'four':
       echo('{"response_code":0,"results":[
-        {"question":"Whatā€™s the largest country in the world, by geographic area?",
+        {"question":"What’s the largest country in the world, by geographic area?",
          "correct_answer":"Russia",
          "incorrect_answers": [
            "Canada",
@@ -536,8 +536,8 @@ if($_GET['set'] == '4') {
     ////////////
     case 'nine':
       echo('{"response_code":0,"results":[
-        {"question":"How old is the President of Lithuania, Dalia GrybauskaitÄ—?",
-         "correct_answer":"62",
+        {"question":"How old is the former President of Lithuania, Dalia Grybauskaite?",
+         "correct_answer":"63",
          "incorrect_answers": [
            "52",
            "55",
@@ -561,7 +561,7 @@ if($_GET['set'] == '4') {
         {"question":"What is the motto of the European Union?",
          "correct_answer":"United in diversity",
          "incorrect_answers": [
-           "Donā€™t be evil",
+           "Don’t be evil",
            "United in coal and steel",
            "Embracing diversity in unison"
          ]}]}');
@@ -589,7 +589,7 @@ if($_GET['set'] == '5') {
   switch ($_GET['question']) {
     case 'one':
       echo('{"response_code":0,"results":[
-        {"question":"What does ā€ASAPā€¯ stand for?",
+        {"question":"What does “ASAP” stand for?",
          "correct_answer":"As soon as possible",
          "incorrect_answers": [
            "As soon as prelevant",
@@ -622,7 +622,7 @@ if($_GET['set'] == '5') {
     ////////////
     case 'four':
       echo('{"response_code":0,"results":[
-        {"question":"Whatā€™s the largest country in the world, by population?",
+        {"question":"What’s the largest country in the world, by population?",
          "correct_answer":"China",
          "incorrect_answers": [
            "Canada",
@@ -666,7 +666,7 @@ if($_GET['set'] == '5') {
     ////////////
     case 'eight':
       echo('{"response_code":0,"results":[
-        {"question":"After the end of World War II, US president Winston Churchill reference Europe as being under ā€” what?",
+        {"question":"After the end of World War II, US president Winston Churchill reference Europe as being under — what?",
          "correct_answer":"Under an iron curtain",
          "incorrect_answers": [
            "Under pandemonium",
@@ -677,7 +677,7 @@ if($_GET['set'] == '5') {
     ////////////
     case 'nine':
       echo('{"response_code":0,"results":[
-        {"question":"The motto of the European Union here is translated. What language is it?  ā€MagÄ§quda fid-diversitĆ .ā€¯",
+        {"question":"The motto of the European Union here is translated. What language is it?  “MagÄ§quda fid-diversitĆ .”",
          "correct_answer":"Maltese",
          "incorrect_answers": [
            "Polish",
@@ -710,12 +710,12 @@ if($_GET['set'] == '5') {
     ////////////
     case 'twelve':
      echo('{"response_code":0,"results":[
-       {"question":"Finish the quote to ā€The Little Princeā€¯, a French book by Antoine de Saint-ExupĆ©ry, ā€It is only with the heart that one can see rightlyā€¦",
-        "correct_answer":"ā€¦what is essential is invisible to the eye.ā€¯",
+       {"question":"Finish the quote to “The Little Prince”, a French book by Antoine de Saint-ExupĆ©ry, “It is only with the heart that one can see rightly...",
+        "correct_answer":"...what is essential is invisible to the eye.”",
         "incorrect_answers": [
-          "ā€¦the friends we make do not change that.ā€¯",
-          "ā€¦the soul-wrenching responsibility never ends.ā€¯",
-          "ā€¦what is essentially invisible to the eye.ā€¯"
+          "...the friends we make do not change that.”",
+          "...the soul-wrenching responsibility never ends.”",
+          "...what is essentially invisible to the eye.”"
         ]}]}');
       break;
   }
